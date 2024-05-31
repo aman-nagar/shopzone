@@ -61,21 +61,20 @@
       .add-to-cart {
         border: none;
         border-radius: 10px;
-        background-color: #333;
+        // background-color: #333;
+        background: linear-gradient(to right, #8e2de2, #4a00e0);
         color: #fff;
         font-weight: 700;
         padding: 5px 10px;
         cursor: pointer;
         transition: background-color 0.3s;
-
         &:hover {
-          background-color: #555;
+          background: linear-gradient(to right, #4a00e0, #8e2de2);
         }
       }
     }
   }
 
-  
   // @include sm {
   //   width: calc(50% - 20px); /* 2 cards per row on small screens */
   // }

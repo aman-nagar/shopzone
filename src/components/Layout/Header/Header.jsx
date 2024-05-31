@@ -27,6 +27,8 @@ const Header = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   }, []);
+
+  const cartQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
   return (
     <>
       <header className={`main-header ${scrolled ? "sticky-header" : ""}`}>
@@ -45,7 +47,7 @@ const Header = () => {
             <AiOutlineHeart />
             <span className="cart-icon" onClick={() => setShowCart(!showCart)}>
               <CgShoppingCart />
-              {!!cart.length && <span>{cart.length}</span>}
+              {!!cartQuantity  && <span>{cartQuantity}</span>}
             </span>
           </div>
         </div>

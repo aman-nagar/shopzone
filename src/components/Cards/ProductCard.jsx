@@ -3,12 +3,14 @@ import React, { useContext } from "react";
 import "./ProductCard.scss";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../Context/AppContext";
+import { Toaster, toast } from "sonner";
 
 export default function ProductCard({ thumbnail, title, price, id }) {
   const { addToCart } = useContext(AppContext);
   const handleAddToCart = () => {
     const product = { id, thumbnail, title, price };
     addToCart(product);
+    toast.success(`${title} has been added to the cart!`);
   };
   return (
     <div className="product-card">
@@ -26,6 +28,7 @@ export default function ProductCard({ thumbnail, title, price, id }) {
           </button>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }

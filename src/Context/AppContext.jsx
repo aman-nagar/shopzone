@@ -38,8 +38,20 @@ export const AppProvider = ({ children }) => {
 
   //cart managment
   const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
-    console.log(cart);
+    setCart((prevCart) => {
+      const existingProductIndex = prevCart.findIndex(
+        (item) => item.id === product.id
+      );
+      if (existingProductIndex !== -1) {
+        // Product already in cart, increase its quantity
+        const updatedCart = [...prevCart];
+        updatedCart[existingProductIndex].quantity += 1;
+        return updatedCart;
+      } else {
+        // Product not in cart, add it with a quantity of 1
+        return [...prevCart, { ...product, quantity: 1 }];
+      }
+    });
   };
 
   const removeFromCart = (productId) => {
