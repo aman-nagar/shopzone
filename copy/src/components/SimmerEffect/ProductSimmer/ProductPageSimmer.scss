@@ -1,0 +1,81 @@
+//src\components\SimmerEffect\ProductSimmer\ProductPageSimmer.scss
+
+.product-loader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+
+  .product {
+    width: 100%;
+    max-width: 80%;
+    display: flex;
+    gap: 10%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .shimmer-card {
+    --shimmer-color: hsl(0, 0%, 78%);
+    animation: shimmer 1.5s infinite linear;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 1000px 100%;
+    position: relative;
+  }
+
+  .shimmer-element {
+    background-color: var(--shimmer-color);
+    background-image: linear-gradient(
+      90deg,
+      var(--shimmer-color) 25%,
+      #e0e0e0 50%,
+      var(--shimmer-color) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+  }
+
+  .images {
+    width: 50%;
+    height: 300px;
+    background-color: var(--shimmer-color);
+  }
+
+  .details {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  h2 {
+    height: 32px;
+    width: 60%;
+  }
+
+  p {
+    height: 22px;
+    width: 100%;
+    background-color: var(--shimmer-color);
+    border-radius: 4px;
+  }
+
+  p:last-child {
+    width: 60%;
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}

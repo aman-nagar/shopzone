@@ -11,8 +11,7 @@ import Cart from "../../Cart/Cart";
 
 const Header = () => {
   const navigate = useNavigate();
-  // const { cart } = useContext(AppContext);
-  const { getTotalQuantity } = useContext(AppContext);
+  const { cart } = useContext(AppContext);
   const [scrolled, setScrolled] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
@@ -29,7 +28,7 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
   }, []);
 
-  // const cartQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+  const cartQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
   return (
     <>
       <header className={`main-header ${scrolled ? "sticky-header" : ""}`}>
@@ -48,7 +47,7 @@ const Header = () => {
             <AiOutlineHeart />
             <span className="cart-icon" onClick={() => setShowCart(!showCart)}>
               <CgShoppingCart />
-              <span>{getTotalQuantity()}</span>
+              {!!cartQuantity  && <span>{cartQuantity}</span>}
             </span>
           </div>
         </div>

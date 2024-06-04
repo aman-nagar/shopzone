@@ -8,7 +8,7 @@ import { Toaster, toast } from "sonner";
 
 export default function ProductPage() {
   const { id } = useParams();
-  const { allProducts, handleAddToCart } = useContext(AppContext);
+  const { allProducts, addToCart } = useContext(AppContext);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -20,6 +20,11 @@ export default function ProductPage() {
   if (!product) {
     return <div>Product not Found</div>;
   }
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    toast.success(`${product.title} has been added to the cart!`);
+  };
 
   return (
     <>
@@ -34,17 +39,7 @@ export default function ProductPage() {
           </div>
           <div className="price">
             <p>Price ${product.price}</p>
-            <button
-              className="add-to-cart"
-              onClick={() =>
-                handleAddToCart(
-                  product.id,
-                  product.title,
-                  product.price,
-                  product.thumbnail
-                )
-              }
-            >
+            <button className="add-to-cart" onClick={handleAddToCart}>
               Add To Cart
             </button>
           </div>

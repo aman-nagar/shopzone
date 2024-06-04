@@ -1,0 +1,20 @@
+// Home.scss
+@import "../../../css-config/mixins.scss";
+
+section {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  // background-color: black;
+  @include sm {
+  }
+
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10%;
+    justify-content: center; /* Center all rows */
+    max-width: 1200px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container */
+  }
+}

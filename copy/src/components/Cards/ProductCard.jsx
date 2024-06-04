@@ -6,7 +6,12 @@ import { AppContext } from "../../Context/AppContext";
 import { Toaster, toast } from "sonner";
 
 export default function ProductCard({ thumbnail, title, price, id }) {
-  const { handleAddToCart } = useContext(AppContext);
+  const { addToCart } = useContext(AppContext);
+  const handleAddToCart = () => {
+    const product = { id, thumbnail, title, price };
+    addToCart(product);
+    toast.success(`${title} has been added to the cart!`);
+  };
   return (
     <div className="product-card">
       <Link to={`/product/${id}`} className="p-image">
@@ -18,10 +23,7 @@ export default function ProductCard({ thumbnail, title, price, id }) {
         <h3>{title}</h3>
         <div className="price">
           <p>${price}</p>
-          <button
-            className="add-to-cart"
-            onClick={() => handleAddToCart(id, title, price, thumbnail)}
-          >
+          <button className="add-to-cart" onClick={handleAddToCart}>
             Add to Cart
           </button>
         </div>
