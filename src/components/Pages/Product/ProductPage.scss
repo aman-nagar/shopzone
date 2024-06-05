@@ -23,6 +23,12 @@
   img {
     width: 50%;
     height: auto;
+    cursor: pointer;
+    transition: all 0.5s;
+    &:hover {
+      scale: 1.2;
+      
+    }
   }
   .p-info {
     width: 50%;

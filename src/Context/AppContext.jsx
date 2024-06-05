@@ -7,7 +7,10 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [allProducts, setAllProducts] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   useEffect(() => {
     async function fetchData() {
       const allProducts_URL = "https://dummyjson.com/products";
@@ -36,19 +39,37 @@ export const AppProvider = ({ children }) => {
     fetchData();
   }, []);
 
+  // cart logic
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
   const handleAddToCart = (id, title, price, thumbnail) => {
-    setCart((prevCart) => {
-      const existingProduct = prevCart.find((item) => item.id == id);
-      if (existingProduct) {
-        return prevCart.map((item) =>
-          item.id == id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      } else {
-        return [...prevCart, { id, title, price, thumbnail, quantity: 1 }];
-      }
-    });
+    const updatedCart = [...cart];
+
+    const existingProductIndex = updatedCart.findIndex((item) => item.id == id);
+    if (existingProductIndex !== -1) {
+      updatedCart[existingProductIndex].quantity++;
+    } else {
+      updatedCart.push({ id, title, price, thumbnail, quantity: 1 });
+    }
+    setCart(updatedCart);
+
+    // add cartitem to localstorage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
     toast.success("Product added to cart");
+
+    // setCart((prevCart) => {
+    //   const existingProduct = prevCart.find((item) => item.id == id);
+    //   if (existingProduct) {
+    //     return prevCart.map((item) =>
+    //       item.id == id ? { ...item, quantity: item.quantity + 1 } : item
+    //     );
+    //   } else {
+    //     return [...prevCart, { id, title, price, thumbnail, quantity: 1 }];
+    //   }
+    // });
   };
+
   const getTotalQuantity = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
   };

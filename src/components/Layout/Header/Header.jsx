@@ -1,4 +1,4 @@
-//src/components/Header/Header.jsx
+//src\components\Layout\Header\Header.jsx
 import "./Header.scss";
 import { useContext, useEffect, useRef, useState } from "react";
 import { TbSearch } from "react-icons/tb";
@@ -29,6 +29,7 @@ const Header = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   }, []);
+
   // animate with gsap
   const { contextSafe } = useGSAP();
 
@@ -45,6 +46,15 @@ const Header = () => {
 
   return (
     <>
+      {showCart && (
+        <div
+          className="overlay"
+          onClick={() => {
+            setShowCart(false);
+            
+          }}
+        ></div>
+      )}
       <header className={`main-header ${scrolled ? "sticky-header" : ""}`}>
         <div className="header-content" ref={headerRef}>
           <ul className="left">
@@ -66,7 +76,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      {showCart && <Cart setShowCart={setShowCart} />}
+      {showCart && <Cart showCart={showCart} setShowCart={setShowCart} />}
     </>
   );
 };
