@@ -11,6 +11,7 @@ export const AppProvider = ({ children }) => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
+
   useEffect(() => {
     async function fetchData() {
       const allProducts_URL = "https://dummyjson.com/products";
@@ -43,6 +44,7 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
   const handleAddToCart = (id, title, price, thumbnail) => {
     const updatedCart = [...cart];
 
@@ -54,20 +56,7 @@ export const AppProvider = ({ children }) => {
     }
     setCart(updatedCart);
 
-    // add cartitem to localstorage
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
     toast.success("Product added to cart");
-
-    // setCart((prevCart) => {
-    //   const existingProduct = prevCart.find((item) => item.id == id);
-    //   if (existingProduct) {
-    //     return prevCart.map((item) =>
-    //       item.id == id ? { ...item, quantity: item.quantity + 1 } : item
-    //     );
-    //   } else {
-    //     return [...prevCart, { id, title, price, thumbnail, quantity: 1 }];
-    //   }
-    // });
   };
 
   const getTotalQuantity = () => {
@@ -77,6 +66,36 @@ export const AppProvider = ({ children }) => {
   const getProductQuantity = (id) => {
     const product = cart.find((item) => item.id == id);
     return product ? product.quantity : 0;
+  };
+
+  const removeCartItem = (id) => {
+    const updatedCart = cart.filter((item) => item.id !== id);
+    setCart(updatedCart);
+    toast.success("Product removed from cart");
+  };
+
+  const incrementCartQuantity = (id) => {
+    const updatedCart = cart.map((item) =>
+      item.id == id ? { ...item, quantity: item.quantity + 1 } : item
+    );
+    setCart(updatedCart);
+  };
+
+  const decrementCartQuantity = (id) => {
+    const updatedCart = cart
+      .map((item) =>
+        item.id == id ? { ...item, quantity: item.quantity - 1 } : item
+      )
+      .filter((item) => item.quantity > 0);
+    setCart(updatedCart);
+    const item = cart.find((item) => item.id == id);
+    if (item && item.quantity === 1) {
+      toast.success("Product removed from cart");
+    }
+  };
+
+  const getTotalCartPrice = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
   return (
     <AppContext.Provider
@@ -88,6 +107,10 @@ export const AppProvider = ({ children }) => {
         handleAddToCart,
         getTotalQuantity,
         getProductQuantity,
+        removeCartItem,
+        incrementCartQuantity,
+        decrementCartQuantity,
+        getTotalCartPrice,
       }}
     >
       {children}
