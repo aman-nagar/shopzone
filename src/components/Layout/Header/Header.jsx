@@ -1,13 +1,14 @@
 //src/components/Header/Header.jsx
 import "./Header.scss";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { TbSearch } from "react-icons/tb";
 import { CgShoppingCart } from "react-icons/cg";
 import { AiOutlineHeart } from "react-icons/ai";
-
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../../Context/AppContext";
 import Cart from "../../Cart/Cart";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -28,12 +29,24 @@ const Header = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   }, []);
+  // animate with gsap
+  const { contextSafe } = useGSAP();
 
-  // const cartQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+  const headerRef = useRef(null);
+  contextSafe(
+    useGSAP(() => {
+      gsap.from(headerRef.current, {
+        y: -100,
+        opacity: 0,
+        duration: 0.7,
+      });
+    })
+  );
+
   return (
     <>
       <header className={`main-header ${scrolled ? "sticky-header" : ""}`}>
-        <div className="header-content">
+        <div className="header-content" ref={headerRef}>
           <ul className="left">
             <li onClick={() => navigate("/")}>Home</li>
             <li>

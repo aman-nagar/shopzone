@@ -1,6 +1,6 @@
 // src/components/Layout/Home/Home.jsx
 import "./Home.scss";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Banner from "./Banner/Banner";
 import { AppContext } from "../../../Context/AppContext";
 import ProductCard from "../../Cards/ProductCard";
