@@ -1,21 +1,21 @@
 //src\components\Layout\Header\Header.jsx
 import "./Header.scss";
-import { useContext, useEffect, useRef, useState } from "react";
-import { TbSearch } from "react-icons/tb";
+import { useEffect, useRef, useState } from "react";
 import { CgShoppingCart } from "react-icons/cg";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-import { AppContext } from "../../../Context/AppContext";
 import Cart from "../../Cart/Cart";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useDispatch, useSelector } from "react-redux";
+import { toggle } from "../../../store/ui-slice";
 
 const Header = () => {
   const navigate = useNavigate();
-  // const { cart } = useContext(AppContext);
-  const { getTotalQuantity } = useContext(AppContext);
+  const dispatch = useDispatch();
+  const cartTotalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const cartIsVisible = useSelector((state) => state.ui.cartIsVisible);
   const [scrolled, setScrolled] = useState(false);
-  const [showCart, setShowCart] = useState(false);
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -28,7 +28,14 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
+  const handleToggleCart = () => {
+    dispatch(toggle());
+  };
 
   // animate with gsap
   const { contextSafe } = useGSAP();
@@ -46,12 +53,11 @@ const Header = () => {
 
   return (
     <>
-      {showCart && (
+      {cartIsVisible && (
         <div
           className="overlay"
           onClick={() => {
-            setShowCart(false);
-            
+            dispatch(toggle()); // Close cart when overlay is clicked
           }}
         ></div>
       )}
@@ -67,16 +73,15 @@ const Header = () => {
             Shop Zone
           </Link>
           <div className="right">
-            <TbSearch onClick={() => setShowSearch(true)} />
             <AiOutlineHeart />
-            <span className="cart-icon" onClick={() => setShowCart(!showCart)}>
+            <span className="cart-icon" onClick={handleToggleCart}>
               <CgShoppingCart />
-              <span>{getTotalQuantity()}</span>
+              <span>{cartTotalQuantity}</span>
             </span>
           </div>
         </div>
       </header>
-      {showCart && <Cart showCart={showCart} setShowCart={setShowCart} />}
+      {cartIsVisible && <Cart />}
     </>
   );
 };
