@@ -1,13 +1,12 @@
 // src/components/Cart/Cart.scss
-
+@import "../../css-config/mixins.scss";
 .cart {
   position: fixed;
   top: 0;
   right: 0;
   width: 400px;
   height: 100vh;
-  background: #fff;
-  color: #fff;
+  color: $primary-text-color;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   padding: 5px;
   z-index: 1000;
@@ -15,9 +14,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: linear-gradient(to right, #8e2de2, #4a00e0);
-  border: 1px solid white;
+  // background: linear-gradient(to right, #8e2de2, #4a00e0);
+  background: $gradient-bg;
+  border: 1px solid $alternate-text-color;
+  @include sm {
+    width: 100%;
+  }
   #close-cart {
+    color: $alternate-text-color;
     position: absolute;
     top: 0px;
     right: 5px;
@@ -36,7 +40,7 @@
       column-gap: 1.5rem;
       position: relative;
       padding-bottom: 10px;
-      border-bottom: 1px solid #fff;
+      // border-bottom: 1px solid #fff;
       &::after {
         content: "";
         position: absolute;
@@ -44,14 +48,15 @@
         left: 0;
         width: 100%;
         height: 1.5px;
-        background: linear-gradient(to right, #8e2de2, #4a00e0);
+        background: $alternate-text-color;
       }
 
       img {
         width: 70px;
         object-fit: cover;
-        background: white;
+        background: $primary-text-color;
         border: 1px solid #fff;
+        border-radius: 15px;
       }
 
       .cart-details {
@@ -82,6 +87,7 @@
           .price {
             font-size: 14px;
             font-weight: 600;
+            color: $alternate-text-color;
           }
 
           .cart-actions {
@@ -89,30 +95,32 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            border-radius: 5px;
-            border: 1px solid wheat;
+            border-radius: 40px;
+            border: 1px solid $primary-text-color;
+
             button {
               cursor: pointer;
               background-color: transparent;
               padding: 0;
               border-radius: 50%;
-              font-size: 1.8rem;
+              font-size: 22px;
               display: flex;
               align-items: center;
               justify-content: center;
               &:hover {
-                color: #4a00e0;
+                color: $primary-text-color;
               }
               &:active {
                 scale: 0.95;
               }
             }
-
             .quantity {
               font-size: 12px;
-              border-right: 1px solid wheat;
-              border-left: 1px solid wheat;
+              border-right: 1px solid $primary-text-color;
+              border-left: 1px solid $primary-text-color;
               padding: 10px 15px;
+              color: $alternate-text-color;
+              font-weight: bold;
             }
           }
         }
@@ -121,7 +129,6 @@
   }
 
   .clear-cart {
-    background: #ff0000;
     color: #fff;
     border: none;
     padding: 10px;
@@ -135,7 +142,7 @@
     }
   }
   .cart-total {
-    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    background: $gradient-bg;
     height: auto;
     padding: 2%;
     .total-price {
@@ -143,10 +150,14 @@
       justify-content: space-between;
       padding: 5px;
       font-weight: 700;
+      color: $alternate-text-color;
     }
-    button {
-      border: 1px solid;
-      padding: 5px;
+    #checkout {
+      background: $alternate-text-color;
+      color: $primary-text-color;
+      border-radius: 100px;
+      padding: 10px;
+      outline: none;
       width: 100%;
       font-weight: bolder;
     }

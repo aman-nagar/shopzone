@@ -1,3 +1,4 @@
+//src\components\Layout\Header\Header.scss
 @import "../../../css-config/mixins.scss";
 .overlay {
   position: fixed;
@@ -12,7 +13,7 @@
 .main-header {
   width: 100%;
   padding: 0 20px;
-  background-color: #212121;
+  background: $alternate-gradient-bg;
   color: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 99;
@@ -47,9 +48,14 @@
           color: inherit;
           text-decoration: none;
           &:hover {
-            color: #8e2de2;
+            color: $alternate-text-color;
           }
         }
+      }
+      .category-nav {
+        position: relative;
+        display: flex;
+        align-items: center;
       }
     }
     .center {
@@ -82,7 +88,7 @@
         span {
           min-width: 20px;
           text-align: center;
-          background-color: #8e2de2;
+          background-color: #00c2c3;
           padding: 2.5px;
           position: absolute;
           top: -5px;

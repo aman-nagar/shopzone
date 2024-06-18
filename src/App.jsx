@@ -1,6 +1,5 @@
 //App.jsx
-import "./App.css";
-
+import "./App.scss";
 import Header from "./components/Layout/Header/Header";
 import Home from "./components/Layout/Home/Home";
 import Footer from "./components/Layout/Footer/Footer";
@@ -12,7 +11,6 @@ import { useEffect } from "react";
 import { fetchProducts } from "./store/product-slice";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import NewsApi from "./testing/NewsApi";
 import ProductAPI from "./testing/API/ProductAPI";
 
 function App() {
@@ -28,7 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/category" element={<CategoryPage />} />
+          {/* <Route path="/category" element={<CategoryPage />} /> */}
         </Routes>
         <Newsletter />
         <Footer />
@@ -36,5 +34,4 @@ function App() {
     </Provider>
   );
 }
-
 export default App;

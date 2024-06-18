@@ -1,5 +1,4 @@
 //src\components\Pages\Product\ProductPage.jsx
-
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./ProductPage.scss";
@@ -7,6 +6,7 @@ import ProductPageSimmer from "../../SimmerEffect/ProductSimmer/ProductPageSimme
 import { Toaster, toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../../../store/cart-slice";
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -38,6 +38,28 @@ export default function ProductPage() {
     toast.success("Product added to cart");
   };
 
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const halfStars = rating % 1 !== 0 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStars;
+
+    const stars = [];
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<FaStar key={`star-full-${i}`} />);
+    }
+
+    if (halfStars === 1) {
+      stars.push(<FaStarHalfAlt key={`star-half-${fullStars}`} />);
+    }
+
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<FaRegStar key={`star-empty-${i}`} />);
+    }
+
+    return <div className="rating-stars">{stars}</div>;
+  };
+
   return (
     <>
       <div className="product-page">
@@ -47,24 +69,46 @@ export default function ProductPage() {
         <div className="p-info">
           <div className="p-details">
             <h2>{product.title}</h2>
-            <p>{product.description}</p>
+            <p className="brand">
+              <span>Brand:</span> {product.brand}
+            </p>
+            <p className="product-desc">
+              <span>Description:</span> {product.description}
+            </p>
           </div>
-          <div className="price">
+
+          <div className="price-rating">
             <p>Price ${product.price}</p>
-            <button
-              className="add-to-cart"
-              onClick={() =>
-                handleAddToCart(
-                  product.id,
-                  product.title,
-                  product.price,
-                  product.thumbnail
-                )
-              }
-            >
-              Add To Cart
-            </button>
+            <div className="rating-container">
+              {renderStars(product.rating)}
+            </div>
           </div>
+          <button
+            className="add-to-cart"
+            onClick={() =>
+              handleAddToCart(
+                product.id,
+                product.title,
+                product.price,
+                product.thumbnail
+              )
+            }
+          >
+            Buy Now
+          </button>
+          <button
+            className="add-to-cart"
+            onClick={() =>
+              handleAddToCart(
+                product.id,
+                product.title,
+                product.price,
+                product.thumbnail
+              )
+            }
+          >
+            Add To Cart
+          </button>
         </div>
       </div>
       <Toaster />

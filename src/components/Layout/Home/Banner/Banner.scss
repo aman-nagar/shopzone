@@ -3,7 +3,9 @@
 .hero-banner {
   padding: 40px 0;
   position: relative;
-  background-image: linear-gradient(to right, #8e2de2, #4a00e0);
+  // background-image: linear-gradient(to right, #8e2de2, #4a00e0);
+  // background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+
   overflow: hidden;
   @include md {
     height: calc(100vh - 80px);

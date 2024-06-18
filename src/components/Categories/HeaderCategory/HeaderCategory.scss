@@ -1,0 +1,16 @@
+//src\components\Categories\HeaderCategory\HeaderCategory.scss
+
+  @import "../../../css-config/mixins.scss";
+
+  .header-category {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100vw;
+    width: 400px;
+    background: $gradient-bg;
+  }

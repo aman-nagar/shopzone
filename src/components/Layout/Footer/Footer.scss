@@ -2,6 +2,7 @@
 .footer {
   width: 100%;
   .footer-content {
+    color: $primary-text-color;
     padding: 50px 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -23,9 +24,9 @@
       .title {
         margin-bottom: 20px;
         font-size: 20px;
+        color: $alternate-text-color;
       }
       .text {
-        color: rgba(0, 0, 0, 0.5);
         font-size: 14px;
       }
       .c-item {
@@ -36,7 +37,7 @@
           font-size: 14px;
           margin-right: 10px;
           margin-top: 4px;
-          color: rgba(0, 0, 0, 0.5);
+          color: $alternate-text-color;
         }
       }
       span {
@@ -49,7 +50,7 @@
     }
   }
   .bottom-bar {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid $primary-text-color;
     .bottom-bar-content {
       padding: 20px;
       display: flex;
@@ -68,7 +69,8 @@
       }
       .text {
         font-size: 12px;
-        color: rgba(0, 0, 0, 0.5);
+        font-weight: bold;
+        color: $alternate-text-color;
       }
     }
   }

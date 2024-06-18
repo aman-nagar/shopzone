@@ -1,3 +1,12 @@
+//src\css-config\mixins.scss
+$primary-text-color: #ffffff;
+$secondary-bg-color: #2d3639;
+$tertiary-bg-color: #40494c;
+$alternate-text-color: #00c2c3;
+
+$gradient-bg: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+$alternate-gradient-bg: linear-gradient(to right, #203a43, #0f2027, #2c5364);
+
 @mixin sm {
   @media only screen and (max-width: 640px) {
     @content;

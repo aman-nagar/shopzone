@@ -1,6 +1,4 @@
 //src\components\Cart\Cart.jsx
-// src/components/Cart/Cart.jsx
-
 import React from "react";
 import "./Cart.scss";
 import emptyCart from "../../assets/cart/emptyCart.png";
@@ -89,7 +87,7 @@ const Cart = () => {
             <p>Total Price</p>${totalCartPrice.toFixed(2)}
           </div>
 
-          <button>Checkout</button>
+          <button id="checkout">Checkout</button>
         </div>
       ) : (
         <div className="cart-empty">
