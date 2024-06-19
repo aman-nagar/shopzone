@@ -14,7 +14,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // background: linear-gradient(to right, #8e2de2, #4a00e0);
   background: $gradient-bg;
   border: 1px solid $alternate-text-color;
   @include sm {

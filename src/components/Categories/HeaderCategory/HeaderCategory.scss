@@ -1,16 +1,29 @@
-//src\components\Categories\HeaderCategory\HeaderCategory.scss
+// src/components/Categories/HeaderCategory/HeaderCategory.scss
 
-  @import "../../../css-config/mixins.scss";
+@import "../../../css-config/mixins.scss";
 
-  .header-category {
-    position: absolute;
-    top: 50px;
-    left: 0;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 100vw;
-    width: 400px;
-    background: $gradient-bg;
+.header-category {
+  position: fixed;
+  top: 80px;
+  left: -165px;
+  width: 400px;
+  height: 100vh;
+  color: $primary-text-color;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  z-index: 1000;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: $gradient-bg;
+  border: 1px solid $alternate-text-color;
+  // transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateX(-100%);
+  opacity: 0;
+
+  &.show {
+    transform: translateX(0);
+    opacity: 1;
   }
+}

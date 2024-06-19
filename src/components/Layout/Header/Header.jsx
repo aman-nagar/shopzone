@@ -1,6 +1,5 @@
 //src\components\Layout\Header\Header.jsx
 
-// src/components/Layout/Header/Header.jsx
 import "./Header.scss";
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,12 +25,6 @@ const Header = () => {
   const categories = useSelector((state) => state.products.categories);
   const status = useSelector((state) => state.products.status);
 
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchCategories());
-    }
-  }, [status, dispatch]);
-
   const handleScroll = () => {
     const offset = window.scrollY;
     if (offset > 200) {
@@ -42,6 +35,12 @@ const Header = () => {
   };
 
   useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchCategories());
+    }
+  }, [status, dispatch]);
+
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -50,6 +49,10 @@ const Header = () => {
 
   const handleToggleCart = () => {
     dispatch(toggle());
+  };
+
+  const handleShowCategory = () => {
+    setShowCategory((prev) => !prev);
   };
 
   // animate with gsap
@@ -65,11 +68,6 @@ const Header = () => {
       });
     })
   );
-
-  const handleShowCategory = () => {
-    setShowCategory(!showCategory);
-  };
-
   return (
     <>
       {cartIsVisible && (
@@ -89,12 +87,12 @@ const Header = () => {
               <span>
                 {showCategory ? <IoIosArrowUp /> : <IoIosArrowDown />}
               </span>
-              {showCategory && (
-                <HeaderCategory
-                  categories={categories}
-                  setShowCategory={setShowCategory}
-                />
-              )}
+
+              <HeaderCategory
+                categories={categories}
+                showCategory={showCategory}
+                setShowCategory={setShowCategory}
+              />
             </li>
           </ul>
           <Link className="center" to="/">
