@@ -1,13 +1,24 @@
 // src/utils/localStorage.js
-export const getLocalStorageItem = (key) => {
-  const item = localStorage.getItem(key);
-  return item ? JSON.parse(item) : null;
+
+// Function to load state from local storage
+export const loadState = (state) => {
+  try {
+    const serializedState = localStorage.getItem("reduxSate");
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    //err
+  }
 };
 
-export const setLocalStorageItem = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value));
-};
-
-export const removeLocalStorageItem = (key) => {
-  localStorage.removeItem(key);
+// Function to save state to local storage
+export const saveState = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("reduxSate", serializedState);
+  } catch (err) {
+    //err
+  }
 };

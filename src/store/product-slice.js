@@ -1,16 +1,19 @@
 //src\store\product-slice.js
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { saveState } from "./localStorage";
 const PRODUCT_API_URL = "https://dummyjson.com/products";
 const CATEGORY_API_URL = "https://dummyjson.com/products/categories";
 
 // const PRODUCT_API_URL = "https://api.escuelajs.co/api/v1/products";
 // const PRODUCT_API_URL = "https://api.escuelajs.co/api/v1/products";
 
+// fetching products and categories
 export const fetchProducts = createAsyncThunk(
-  "productss/fetchProducts",
+  "products/fetchProducts",
   async () => {
     const response = await fetch(PRODUCT_API_URL);
     const data = await response.json();
+    saveState({ products: data.products }); // Save fetched products to local storage
     console.log(data.products);
 
     return data.products; //this is for url
@@ -23,16 +26,18 @@ export const fetchCategories = createAsyncThunk(
   async () => {
     const response = await fetch(CATEGORY_API_URL);
     const data = await response.json();
-    console.log(data);
+    saveState({ categories: data }); // Save fetched categories to local storage
+    console.log(data + "cat");
     return data;
   }
 );
 
+// Slice for products
 const productSlice = createSlice({
   name: "products",
   initialState: {
-    allProducts: [],
-    categories: [],
+    allProducts: JSON.parse(localStorage.getItem("products")) || [],
+    categories: JSON.parse(localStorage.getItem("categories")) || [],
     status: "idle",
     error: null,
   },

@@ -1,13 +1,10 @@
 // src/components/Categories/HeaderCategory/HeaderCategory.jsx
-
-import React, { useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import "./HeaderCategory.scss";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 const HeaderCategory = ({ categories, showCategory }) => {
-  const { contextSafe } = useGSAP();
   const ref = useRef(null);
 
   useEffect(() => {
@@ -23,7 +20,7 @@ const HeaderCategory = ({ categories, showCategory }) => {
         x: -200,
         opacity: 0,
         duration: 0.3,
-        ease: "",
+        ease: "bounce.in",
       });
     }
   }, [showCategory]);
@@ -39,4 +36,4 @@ const HeaderCategory = ({ categories, showCategory }) => {
   );
 };
 
-export default HeaderCategory;
+export default memo(HeaderCategory);

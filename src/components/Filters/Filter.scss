@@ -1,0 +1,47 @@
+// src\components\Filters\Filter.scss
+@import "../../css-config/mixins.scss";
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  max-width: fit-content;
+  @include bg-blur;
+  position: absolute;
+  top: 20px;
+  left: 12%;
+
+  .filter-icon {
+    width: 24px;
+    height: 24px;
+    color: $alternate-text-color;
+  }
+
+  .filter-options {
+    display: flex;
+    gap: 10px;
+    // flex-direction: column;
+    select {
+      padding: 5px 10px;
+      border: 1px solid $alternate-text-color;
+      border-radius: 10px;
+      background-color: transparent;
+      color: $alternate-text-color;
+      font-size: 1rem;
+      cursor: pointer;
+      appearance: none;
+      outline: none;
+
+      &:hover,
+      &:focus {
+        border-color: $alternate-text-color;
+      }
+
+      option {
+        background-color: rgba(0, 194, 195, 0.11);
+        color: $alternate-text-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+//src\components\Products\ProductList.scss
+@import "../../css-config/mixins.scss";
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10%;
+  justify-content: center; /* Center all rows */
+  max-width: 1200px; /* Set a maximum width for the container */
+  margin: 0 auto; /* Center the container */
+  margin-top: 7%;
+}

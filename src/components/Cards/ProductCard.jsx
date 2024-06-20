@@ -1,12 +1,11 @@
 // src/components/Cards/ProductCard.jsx
-import React, { useContext } from "react";
 import "./ProductCard.scss";
 import { Link } from "react-router-dom";
 import { Toaster, toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../store/cart-slice";
-import { IoIosAddCircleOutline } from "react-icons/io";
 import { LuPlus } from "react-icons/lu";
+
 export default function ProductCard({ thumbnail, title, price, id }) {
   const dispatch = useDispatch();
   const handleAddToCart = () => {
