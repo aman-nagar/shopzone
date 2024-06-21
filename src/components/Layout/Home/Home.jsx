@@ -24,7 +24,11 @@ export default function Home() {
   }, [status, dispatch]);
 
   const filteredProducts = useSelector((state) =>
-    selectFilteredProducts(state.products.allProducts, filteredCategory, sortOption)
+    selectFilteredProducts(
+      state.products.allProducts,
+      filteredCategory,
+      sortOption
+    )
   );
 
   return (
