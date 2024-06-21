@@ -91,7 +91,7 @@ const Header = () => {
         <div className="header-content" ref={headerRef}>
           <ul className="left">
             <li onClick={() => navigate("/")}>Home</li>
-            <li className="category-nav" onClick={handleShowCategory}>
+            {/* <li className="category-nav" onClick={handleShowCategory}>
               <p>Category </p>
               <span>
                 {showCategory ? <IoIosArrowUp /> : <IoIosArrowDown />}
@@ -102,6 +102,34 @@ const Header = () => {
                   showCategory={showCategory}
                 />
               )}
+            </li> */}
+
+            <li
+              onClick={() =>
+                document
+                  .getElementById("products")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              Products
+            </li>
+            <li
+              onClick={() =>
+                document
+                  .getElementById("about")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              About
+            </li>
+            <li
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              Contact
             </li>
           </ul>
           <Link className="center" to="/">

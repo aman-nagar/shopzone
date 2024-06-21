@@ -5,7 +5,7 @@ import productSlice from "../../store/product-slice";
 import "./ProductList.scss";
 export default function ProductList({ products }) {
   return (
-    <div className="product-list">
+    <div className="product-list" id="products">
       {productSlice.length === 0 ? (
         <p>No Products Found</p>
       ) : (

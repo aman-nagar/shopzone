@@ -9,7 +9,7 @@ import "./Newsletter.scss";
 
 const Newsletter = () => {
   return (
-    <div className="newsletter-section">
+    <div className="newsletter-section" id="contact">
       <div className="newsletter-content">
         <span className="samll-text">Newsletter</span>
         <span className="big-text">Sign up for latest updates and offers</span>
