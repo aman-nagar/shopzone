@@ -27,7 +27,6 @@ export const fetchCategories = createAsyncThunk(
     const response = await fetch(CATEGORY_API_URL);
     const data = await response.json();
     saveState({ categories: data }); // Save fetched categories to local storage
-    console.log(data + "cat");
     return data;
   }
 );

@@ -5,10 +5,10 @@
   position: relative;
   // background-image: linear-gradient(to right, #8e2de2, #4a00e0);
   // background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-
+  z-index: -1;
   overflow: hidden;
   @include md {
-    height: calc(100vh - 80px);
+    height: calc(100vh - $header-height);
   }
   .content {
     height: 100%;

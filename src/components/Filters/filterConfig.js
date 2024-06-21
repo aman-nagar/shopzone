@@ -1,7 +1,7 @@
 // src/components/Filters/filterConfig.js
 export const filterOptions = {
   category: [
-    { value: "all", label: "Filter By Category" },
+    { value: "all", label: "  Category" },
     { value: "beauty", label: "Beauty" },
     { value: "fragrances", label: "Fragrances" },
     { value: "groceries", label: "Groceries" },

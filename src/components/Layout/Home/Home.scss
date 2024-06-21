@@ -5,10 +5,10 @@ section {
   width: 100%;
   height: auto;
   padding: 20px;
+
   // border-top: 1px solid $alternate-text-color;
   position: relative;
   @include sm {
+    padding-top: 20%;
   }
-
-
 }

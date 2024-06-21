@@ -1,18 +1,22 @@
 //src\css-config\mixins.scss
+
+// colors
 $primary-text-color: #ffffff;
 $secondary-bg-color: #2d3639;
 $tertiary-bg-color: #40494c;
 $alternate-text-color: #00c2c3;
 
+// background
 $gradient-bg: linear-gradient(to right, #0f2027, #203a43, #2c5364);
 $alternate-gradient-bg: linear-gradient(to right, #203a43, #0f2027, #2c5364);
+
 $bg-blur: (
   background: rgba(0, 194, 195, 0.11),
   border-radius: 16px,
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
   backdrop-filter: blur(20px),
   -webkit-backdrop-filter: blur(20px),
-  border: 1px solid rgba(0, 194, 195, 0.67)
+  border: 1px solid rgba(0, 194, 195, 0.67),
 );
 
 @mixin bg-blur {
@@ -21,6 +25,10 @@ $bg-blur: (
   }
 }
 
+// layout
+$header-height: 70px;
+
+// media query
 @mixin sm {
   @media only screen and (max-width: 640px) {
     @content;

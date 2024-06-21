@@ -10,7 +10,8 @@ import HeaderCategory from "../../Categories/HeaderCategory/HeaderCategory";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../../../store/ui-slice";
 import { fetchCategories } from "../../../store/product-slice";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp, IoIosSearch } from "react-icons/io";
+import Search from "./Search/Search";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -107,6 +108,7 @@ const Header = () => {
             Shop Zone
           </Link>
           <div className="right">
+            <Search />
             <AiOutlineHeart />
             <span className="cart-icon" onClick={handleToggleCart}>
               <CgShoppingCart />

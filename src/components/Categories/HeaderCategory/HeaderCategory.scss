@@ -1,13 +1,11 @@
 // src/components/Categories/HeaderCategory/HeaderCategory.scss
-
 @import "../../../css-config/mixins.scss";
-
 .header-category {
   position: fixed;
-  top: 80px;
+  top: 70px;
   left: -165px;
   width: 400px;
-  height: 100vh;
+  height: calc(100vh - $header-height);
   color: $primary-text-color;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   padding: 5px;
@@ -15,15 +13,18 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 2%;
+  // justify-content: space-between;
+  flex-wrap: wrap;
   background: $gradient-bg;
+  @include bg-blur;
   border: 1px solid $alternate-text-color;
   // transition: transform 0.3s ease, opacity 0.3s ease;
   transform: translateX(-100%);
   opacity: 0;
-
+  border-radius: 0px 5px 5px 0px;
   &.show {
-    transform: translateX(0);
+    // transform: translateX(0);
     opacity: 1;
   }
 }

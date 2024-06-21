@@ -38,6 +38,7 @@ export default function ProductPage() {
     toast.success("Product added to cart");
   };
 
+  // rating
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
     const halfStars = rating % 1 !== 0 ? 1 : 0;

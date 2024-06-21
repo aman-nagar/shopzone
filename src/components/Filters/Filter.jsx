@@ -20,34 +20,36 @@ export default function Filter({
   };
 
   return (
-    <div className="filter">
-      <CiFilter className="filter-icon" />
-      <div className="filter-options">
-        <select
-          name="category"
-          id="category"
-          value={filteredCategory}
-          onChange={handleCategoryChange}
-        >
-          {filterOptions.category.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+    <div className="filter-container">
+      <div className="filter">
+        <CiFilter className="filter-icon" />
+        <div className="filter-options">
+          <select
+            name="category"
+            id="category"
+            value={filteredCategory}
+            onChange={handleCategoryChange}
+          >
+            {filterOptions.category.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
 
-        <select
-          name="sort"
-          id="sort"
-          value={sortOption}
-          onChange={handleSortChange}
-        >
-          {filterOptions.sort.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+          <select
+            name="sort"
+            id="sort"
+            value={sortOption}
+            onChange={handleSortChange}
+          >
+            {filterOptions.sort.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
     </div>
   );

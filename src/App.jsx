@@ -11,7 +11,6 @@ import { useEffect } from "react";
 import { fetchProducts } from "./store/product-slice";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import ProductAPI from "./testing/API/ProductAPI";
 
 function App() {
   useEffect(() => {
@@ -21,12 +20,11 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter basename="/shopzone">
-        <ProductAPI />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductPage />} />
-          {/* <Route path="/category" element={<CategoryPage />} /> */}
+          <Route path="/category:category" element={<CategoryPage />} />
         </Routes>
         <Newsletter />
         <Footer />
