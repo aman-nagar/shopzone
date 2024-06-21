@@ -10,71 +10,122 @@
   gap: 5%;
   padding: 2%;
   user-select: none;
-  .p-images {
+
+  @include sm {
+    flex-direction: column;
+    height: calc(100vh - 50px);
+    gap: 0;
+    padding: 1px;
+    box-shadow: rgba(15, 32, 39, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(44, 83, 100, 0.35) 0px -2px 6px 0px inset;
+    border: none;
+  }
+
+  .p-images,
+  .p-info {
     width: 50%;
     height: 75%;
     padding: 20px;
     box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
     background: $gradient-bg;
     border-radius: 20px;
     box-shadow: rgba(15, 32, 39, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
       rgba(44, 83, 100, 0.35) 0px -2px 6px 0px inset;
+
+    @include sm {
+      width: 100%;
+      height: 60%;
+      border-radius: 0 0 0 50px;
+      box-shadow: none;
+      border-left: 1px solid $alternate-text-color;
+      border-bottom: 1px solid $alternate-text-color;
+    }
+  }
+
+  .p-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
     img {
       width: 50%;
       height: auto;
       cursor: pointer;
       transition: all 0.5s;
+
       &:hover {
         scale: 1.2;
       }
+
+      @include sm {
+        width: 100%;
+      }
     }
   }
+
   .p-info {
-    width: 50%;
-    padding: 20px;
-    height: 75%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border-radius: 20px;
-    box-sizing: border-box;
-    background: $gradient-bg;
-    box-shadow: rgba(15, 32, 39, 0.25) 0px 50px 100px -20px,
-      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-      rgba(44, 83, 100, 0.35) 0px -2px 6px 0px inset;
+
+    @include sm {
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      width: 100%;
+      height: 50%;
+      background: $gradient-bg;
+      border: none;
+    }
+
     .p-details {
       display: flex;
       flex-direction: column;
+
       h2 {
         font-size: 29px;
         margin-bottom: 10px;
         font-weight: bold;
         color: $primary-text-color;
-      }
-      .brand {
-        span {
-          color: $alternate-text-color;
-          font-weight: bold;
+
+        @include md {
+          font-size: 18px;
         }
-        line-height: 2rem;
-        color: $primary-text-color;
-        font-weight: bold;
+
+        @include sm {
+          font-size: 14px;
+          color: $alternate-text-color;
+          margin: 0;
+        }
       }
+
+      .brand,
+      .product-desc {
+        line-height: 2rem;
+        font-size: 14px;
+        color: $primary-text-color;
+
+        @include sm {
+          font-size: 12px;
+        }
+
+        span {
+          font-weight: bold;
+          color: $alternate-text-color;
+        }
+      }
+
       .product-desc {
         letter-spacing: 1px;
-        span {
-          font-weight: bold;
-          color: $alternate-text-color;
+
+        @include sm {
+          display: none;
         }
-        line-height: 2rem;
-        color: $primary-text-color;
       }
     }
+
     .price-rating {
       width: 100%;
       font-size: 18px;
@@ -82,26 +133,40 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      p {
-      }
+
       .rating-container {
         .rating-stars {
           display: flex;
         }
       }
     }
+
     .add-to-cart {
       border: none;
       border-radius: 20px;
       background-color: $alternate-text-color;
       color: #fff;
       font-weight: 700;
-      padding: 10px 10px;
+      padding: 10px;
       cursor: pointer;
       transition: background-color 0.3s;
 
+      @include sm {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        border-radius: 25px 0px 29px 0px;
+      }
+
       &:hover {
         // background-color: #555;
+      }
+    }
+
+    .buy-now {
+      @include sm {
+        display: none;
       }
     }
   }

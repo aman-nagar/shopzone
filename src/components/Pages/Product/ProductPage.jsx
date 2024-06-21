@@ -1,7 +1,7 @@
 //src\components\Pages\Product\ProductPage.jsx
+import "./ProductPage.scss";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "./ProductPage.scss";
 import ProductPageSimmer from "../../SimmerEffect/ProductSimmer/ProductPageSimmer";
 import { Toaster, toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,25 +67,27 @@ export default function ProductPage() {
         <div className="p-images">
           <img src={product.images[0]} alt={product.title} />
         </div>
-        <div className="p-info">
+        <div className="p-info p-mobile">
           <div className="p-details">
             <h2>{product.title}</h2>
             <p className="brand">
               <span>Brand:</span> {product.brand}
             </p>
-            <p className="product-desc">
-              <span>Description:</span> {product.description}
+
+            <p className="product-desc ">
+              <span>Description:</span>{" "}
+              <span className="desc-truncate">{product.description}</span>
             </p>
           </div>
-
           <div className="price-rating">
             <p>Price ${product.price}</p>
             <div className="rating-container">
               {renderStars(product.rating)}
             </div>
           </div>
+
           <button
-            className="add-to-cart"
+            className="add-to-cart buy-now"
             onClick={() =>
               handleAddToCart(
                 product.id,
