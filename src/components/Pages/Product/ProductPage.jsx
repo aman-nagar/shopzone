@@ -75,7 +75,7 @@ export default function ProductPage() {
             </p>
 
             <p className="product-desc ">
-              <span className="desc-heading">Description:</span>
+              <span className="desc-heading">Description: </span>
               <span className="desc-truncate">{product.description}</span>
             </p>
           </div>

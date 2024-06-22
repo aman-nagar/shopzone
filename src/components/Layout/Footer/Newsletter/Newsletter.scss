@@ -8,6 +8,8 @@
   background: #f9f9f9 url("../../../../assets/newsletter-bg.jpeg");
   background-position: no-repeat;
   background-size: cover;
+  @include bg-blur;
+  border-radius: 0px;
   .newsletter-content {
     width: fit-conntent;
     display: flex;
@@ -58,9 +60,11 @@
       justify-content: center;
       cursor: pointer;
       font-size: 16px;
-      color: #fff;
-      background-color: #8e2de2;
-      border-bottom: 3px solid #8e2de2;
+      // color: #fff;
+      // background-color: #8e2de2;
+      font-weight: bold;
+      color: $alternate-text-color;
+      background: $gradient-bg;
       @include md {
         width: 120px;
       }

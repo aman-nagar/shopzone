@@ -137,7 +137,7 @@ const Header = () => {
           </Link>
           <div className="right">
             <Search />
-            <AiOutlineHeart />
+            {/* <AiOutlineHeart /> */}
             <span className="cart-icon" onClick={handleToggleCart}>
               <CgShoppingCart />
               <span>{cartTotalQuantity}</span>

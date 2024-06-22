@@ -16,6 +16,7 @@
   justify-content: space-between;
   background: $gradient-bg;
   border: 1px solid $alternate-text-color;
+  border-radius: 5px;
   @include sm {
     width: 100%;
   }
@@ -96,7 +97,10 @@
             align-items: center;
             border-radius: 40px;
             border: 1px solid $primary-text-color;
-
+            @include sm {
+              // width: 25%;
+              
+            }
             button {
               cursor: pointer;
               background-color: transparent;
@@ -120,6 +124,9 @@
               padding: 10px 15px;
               color: $alternate-text-color;
               font-weight: bold;
+              @include sm {
+                padding: 5px 10px;
+              }
             }
           }
         }
