@@ -3,7 +3,7 @@
 
 .product-page {
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100vh - $header-height);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,9 +16,9 @@
     height: calc(100vh - 50px);
     gap: 0;
     padding: 1px;
-    box-shadow: rgba(15, 32, 39, 0.25) 0px 50px 100px -20px,
-      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-      rgba(44, 83, 100, 0.35) 0px -2px 6px 0px inset;
+    // box-shadow: rgba(15, 32, 39, 0.25) 0px 50px 100px -20px,
+    //   rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    //   rgba(44, 83, 100, 0.35) 0px -2px 6px 0px inset;
     border: none;
   }
 
@@ -88,7 +88,7 @@
         font-size: 29px;
         margin-bottom: 10px;
         font-weight: bold;
-        color: $primary-text-color;
+        color: $alternate-text-color;
 
         @include md {
           font-size: 18px;
@@ -96,24 +96,25 @@
 
         @include sm {
           font-size: 14px;
-          color: $alternate-text-color;
           margin: 0;
+          color: $primary-text-color;
         }
       }
 
       .brand,
       .product-desc {
         line-height: 2rem;
-        font-size: 14px;
+        font-size: 16px;
         color: $primary-text-color;
 
-        @include sm {
-          font-size: 12px;
-        }
-
-        span {
+        .brand-heading,
+        .desc-heading {
           font-weight: bold;
           color: $alternate-text-color;
+          @include sm {
+            color: $primary-text-color;
+            font-size: 14px;
+          }
         }
       }
 
@@ -121,7 +122,10 @@
         letter-spacing: 1px;
 
         @include sm {
-          display: none;
+          // display: none;
+          letter-spacing: unset;
+          font-size: 12px;
+          line-height: unset;
         }
       }
     }
@@ -133,7 +137,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-
+      .price {
+        @include sm {
+          font-weight: bold;
+          font-size: 22px;
+        }
+        .price-tag {
+          @include sm {
+            display: none;
+          }
+        }
+      }
       .rating-container {
         .rating-stars {
           display: flex;
@@ -156,7 +170,8 @@
         bottom: 0;
         right: 0;
         width: 50%;
-        border-radius: 25px 0px 29px 0px;
+        border-radius: 35px 0px 29px 0px;
+        padding: 15px;
       }
 
       &:hover {

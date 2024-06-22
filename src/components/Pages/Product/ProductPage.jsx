@@ -71,16 +71,18 @@ export default function ProductPage() {
           <div className="p-details">
             <h2>{product.title}</h2>
             <p className="brand">
-              <span>Brand:</span> {product.brand}
+              <span className="brand-heading">Brand:</span> {product.brand}
             </p>
 
             <p className="product-desc ">
-              <span>Description:</span>{" "}
+              <span className="desc-heading">Description:</span>
               <span className="desc-truncate">{product.description}</span>
             </p>
           </div>
           <div className="price-rating">
-            <p>Price ${product.price}</p>
+            <p className="price">
+              <span className="price-tag">Price </span>${product.price}
+            </p>
             <div className="rating-container">
               {renderStars(product.rating)}
             </div>
